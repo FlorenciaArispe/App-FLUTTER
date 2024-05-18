@@ -67,6 +67,9 @@ switch (selectedIndex) { //SEGUN EL SELECTEDINDEX
   case 1:
     page = FavoritesPage();
     break;
+     case 2:
+        page = RotatedFavoritesPage();
+        break;
   default:
     throw UnimplementedError('no widget for $selectedIndex');
 }
@@ -88,6 +91,10 @@ switch (selectedIndex) { //SEGUN EL SELECTEDINDEX
                     NavigationRailDestination(
                       icon: Icon(Icons.favorite),
                       label: Text('Favorites'),
+                    ),
+                     NavigationRailDestination(
+                      icon: Icon(Icons.rotate_right),
+                      label: Text('Rotated Favorites'),
                     ),
                   ],
                   selectedIndex: selectedIndex,
@@ -185,6 +192,17 @@ class FavoritesPage extends StatelessWidget {
             title: Text(pair.asLowerCase),
           ),
       ],
+    );
+  }
+}
+
+//NUEVA CLASE PARA AGREGAR LA PANTALLA DE FAVORITOS ROTADA
+class RotatedFavoritesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RotatedBox(
+      quarterTurns: 3,
+      child: FavoritesPage(),
     );
   }
 }
